@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bootstrap exercises</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-sm-3" </div>
+      <<h1>Small website</h1>
+        <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id ="username" class="form-control" id="user">
+    </div>
+
+         <button type="button" class="btn btn-primary"> <span class="Search">search</span></button>
+
+
+</div>
+<div class="container">
+  <<div class="col-sm-9">
+    <table class="table table-bordered" id = "mitabla">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>description</th>
+        <th>stars</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+</div>
+</div>
+<script>
+    $(document).ready(function(){
+        $("button").click(function(){
+            $("#user").text( $("#username").val());
+            $('#mitabla tbody tr').remove();
+            $.get( "https://api.github.com/users/"+ $("#username").val()+ "/repos", function( data ) {
+
+            }, "json" );
+            $("#username").val('');
+        });
+    });
+</script>
+
+</body>
+</html>
